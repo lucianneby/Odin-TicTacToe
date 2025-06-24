@@ -1,0 +1,43 @@
+/* Style for the table itself (optional, but good for centering) */
+body {
+  width: 100%;
+  height: 100%;
+}
+
+
+.gameboard {
+  border-collapse: collapse; /* Essential for clean borders */
+  width: 300px; /* Adjust as needed */
+  height: 300px; /* Adjust as needed */
+  margin: 20px auto; /* Center the board */
+}
+
+/* Style for individual cells */
+.gameboard td {
+  width: 33.33%; /* Make cells equally wide */
+  height: 33.33%; /* Make cells equally tall */
+  text-align: center;
+  vertical-align: middle;
+  font-size: 3em; /* Adjust font size for X's and O's */
+
+  /* Apply borders to ALL sides by default, then remove selectively */
+  border: 4px solid #333; /* This will create a grid of all cells */
+}
+
+/* Remove border from the right of the last column cells */
+.gameboard tr td:last-child {
+  border-right: none;
+}
+
+.gameboard tr td:first-child {
+  border-left:none;
+}
+
+/* Remove border from the bottom of the last row cells */
+.gameboard tr:last-child td {
+  border-bottom: none;
+}
+
+.gameboard tr:first-child td {
+  border-top: none;
+}
