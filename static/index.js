@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const _board = new Array(BOARD_DIMENTIONS.rows * BOARD_DIMENTIONS.columns);
     const DOMGameboard = document.querySelector('.gameboard');
     let playerHasWon = false;
-
     let currentMark = 'X';
 
     const placeMark = (square) => {
@@ -17,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
       } else {
         currentMark = 'X';
       }
+
     };
 
     const displayInConsole = () => {
@@ -54,6 +54,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         if (boardValuesOnLine.every((value) => value === mark)) {
+          playerHasWon = true;
+          DOMGameboard.removeEventListener('mousedown', handleCellClick);
           return true;
         }
       }
@@ -61,26 +63,23 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const announceWinner = (mark) => {
-      console.log(`${mark} wins!`);
       const announcement = document.createElement('H1');
+
       announcement.innerText = `${mark} wins!`;
       document.body.appendChild(announcement);
-      playerHasWon = true;
-
+      
     };
 
     const generateWinningLines = (BOARD_DIMENTIONS) => {
       // write algorithm for generating lines
     };
 
-    DOMGameboard.addEventListener('mousedown', (event) => {
+    const handleCellClick = (event) => {
       if (event.target.tagName !== 'TD') {
         return;
       }
 
-      if (playerHasWon) {
-        return;
-      }
+      
 
       const clickedCell = event.target;
       const clickedRow = clickedCell.parentNode;
@@ -102,7 +101,10 @@ document.addEventListener('DOMContentLoaded', () => {
         Gameboard.announceWinner(markToPlace);
       }
 
-    });
+    }
+
+    DOMGameboard.addEventListener('mousedown', handleCellClick);
+
 
     return {placeMark, displayOnPage, displayInConsole, checkWinner, announceWinner, _board}
   })();
