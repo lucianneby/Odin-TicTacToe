@@ -1,4 +1,9 @@
-console.log('console log works'); // runs
+// TODO:
+// - create separate player factory function and objects
+//  - let players input their names
+// - create gameController IIFE and delegate necessary functions from Gameboard to it.
+// - tuck as much stuff away as possible (private variables)
+
 
 document.addEventListener('DOMContentLoaded', () => {
   const Gameboard = (() => {
@@ -79,8 +84,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      
-
       const clickedCell = event.target;
       const clickedRow = clickedCell.parentNode;
       
@@ -122,3 +125,8 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 
+function CreatePlayer(name, mark) {
+  const placeMark = (square) => {
+    Gameboard.placemark(mark
+  }
+}
